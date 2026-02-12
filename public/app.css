@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.wrap {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.col {
+    flex: 1;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+}
+
+button {
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.err {
+    display: block;
+    color: #b00020;
+    min-height: 1em;
+}
+
+.muted {
+    color: #777;
+}
+
+ul {
+    padding-left: 18px;
+}

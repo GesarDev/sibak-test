@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf }}">
+  <title>Two Forms</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<main class="wrap">
+  <section class="col">
+    <h2>Регистрация</h2>
+
+    <form id="registerForm" novalidate>
+      <label>Имя
+        <input name="name" type="text" autocomplete="name">
+        <small class="err" data-err-for="name"></small>
+      </label>
+
+      <label>Email
+        <input name="email" type="email" autocomplete="email">
+        <small class="err" data-err-for="email"></small>
+      </label>
+
+      <label>Телефон
+        <input name="phone" type="tel" autocomplete="tel">
+        <small class="err" data-err-for="phone"></small>
+      </label>
+
+      <label>Пароль
+        <input name="password" type="password" autocomplete="new-password">
+        <small class="err" data-err-for="password"></small>
+      </label>
+
+      <label>Повтор пароля
+        <input name="password_repeat" type="password" autocomplete="new-password">
+        <small class="err" data-err-for="password_repeat"></small>
+      </label>
+
+      <button type="submit">Зарегистрироваться</button>
+      <small class="err" data-err-for="_global"></small>
+    </form>
+
+    <h3>Зарегистрированные</h3>
+    <ul id="usersList">
+      {% for u in lastUsers %}
+        <li><b>{{ u.name }}</b> — {{ u.email }} — {{ u.phone }}</li>
+      {% else %}
+        <li class="muted">Пока пусто</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="col">
+    <h2>Обратная связь</h2>
+
+    <form id="feedbackForm" novalidate>
+      <label>Email
+        <input name="email" type="email" autocomplete="email">
+        <small class="err" data-err-for="email"></small>
+      </label>
+
+      <label>Сообщение
+        <textarea name="message" rows="5"></textarea>
+        <small class="err" data-err-for="message"></small>
+      </label>
+
+      <button type="submit">Отправить</button>
+      <small class="err" data-err-for="_global"></small>
+    </form>
+
+    <h3>Сообщения</h3>
+    <ul id="feedbackList">
+      {% for f in lastFeedback %}
+        <li><b>{{ userNamesByEmail[f.email|lower]|default(f.email) }}</b>: {{ f.message }}</li>
+      {% else %}
+        <li class="muted">Пока пусто</li>
+      {% endfor %}
+    </ul>
+  </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
