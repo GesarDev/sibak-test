@@ -35,10 +35,6 @@ class RegisterUserHandler
             return ['errors' => ValidationErrors::fromViolations($violations, $fieldMap)];
         }
 
-        if ($req->password !== $req->passwordRepeat) {
-            return ['errors' => ['password_repeat' => 'Пароли не совпадают']];
-        }
-
         $email = mb_strtolower(trim($req->email));
         if ($this->users->findOneBy(['email' => $email])) {
             return ['errors' => ['email' => 'Этот email уже зарегистрирован']];

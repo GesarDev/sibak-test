@@ -6,6 +6,7 @@ use App\Repository\FeedbackMessageRepository;
 use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: FeedbackMessageRepository::class)]
 class FeedbackMessage
@@ -16,9 +17,14 @@ class FeedbackMessage
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Email]
+    #[Assert\Length(max: 255)]
     private ?string $email = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 5, max: 5000)]
     private ?string $message = null;
 
     #[ORM\ManyToOne(inversedBy: 'feedbackMessages')]
