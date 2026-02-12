@@ -18,7 +18,7 @@
 
 ```bash
 # Клонировать репозиторий
-git clone <url>
+git clone git@github.com:GesarDev/sibak-test.git
 
 # Установить зависимости
 composer install
