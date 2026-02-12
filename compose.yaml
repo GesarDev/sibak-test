@@ -13,7 +13,6 @@ services:
       timeout: 5s
       retries: 10
       start_period: 30s
-    command: ["mysqld", "--default-authentication-plugin=mysql_native_password"]
     volumes:
       - database_data:/var/lib/mysql:rw
 ###< doctrine/doctrine-bundle ###
